@@ -1,3 +1,5 @@
+'use strict';
+
 const lessToJs = require('less-vars-to-js');
 const camelcase = require('camelcase');
 const loaderUtils = require('loader-utils');
