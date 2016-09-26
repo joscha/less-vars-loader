@@ -1,34 +1,39 @@
 {
-  "name": "glob-loader",
-  "version": "0.3.0",
-  "description": "webpack loader to load files at once with glob",
+  "name": "less-vars-loader",
+  "version": "0.0.1",
+  "description": "webpack loader to load variables from less files",
   "main": "index.js",
   "scripts": {
     "pretest": "webpack --config ./test/sample/webpack.config.js",
-    "test": "tap test/test.js"
+    "test": "mocha"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/seanchas116/glob-loader.git"
+    "url": "git+https://github.com/joscha/less-vars-loader.git"
   },
-  "author": "Ryohei Ikegami <iofg2100@gmail.com>",
+  "author": "Joscha Feth <joscha@feth.com>",
+  "engines": {
+    "node": ">=5"
+  },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/seanchas116/glob-loader/issues"
+    "url": "https://github.com/joscha/less-vars-loader/issues"
   },
-  "homepage": "https://github.com/seanchas116/glob-loader#readme",
-  "dependencies": {},
-  "peerDependencies": {
-    "glob": "*"
+  "homepage": "https://github.com/joscha/less-vars-loader#readme",
+  "dependencies": {
+    "camelcase": "^3.0.0",
+    "less-vars-to-js": "^1.1.2",
+    "loader-utils": "^0.2.16"
   },
   "keywords": [
     "webpack",
     "loader",
-    "glob"
+    "less",
+    "vars"
   ],
   "devDependencies": {
-    "glob": "^7.0.5",
-    "tap": "^7.1.2",
+    "chai": "^3.5.0",
+    "mocha": "^3.0.2",
     "webpack": "^1.9.10"
   }
 }

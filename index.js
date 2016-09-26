@@ -1,24 +1,33 @@
-"use strict";
+const lessToJs = require('less-vars-to-js');
+const camelcase = require('camelcase');
+const loaderUtils = require('loader-utils');
 
-var glob = require("glob");
-var path = require("path");
-
-module.exports = function (content, sourceMap) {
+module.exports = function(source) {
   this.cacheable && this.cacheable();
-  var resourceDir = path.dirname(this.resourcePath);
-  var pattern = content.trim();
-  var files = glob.sync(pattern, {
-    cwd: resourceDir
-  });
+  const query = loaderUtils.parseQuery(this.query);
+  console.log('query', query);
+  const camelCaseKeys = !!(query.camelCase || query.camelcase);
 
-  if (!files.length) {
-    this.emitWarning('Did not find anything for glob "' + pattern + '" in directory "' + resourceDir + '"');
+  const vars = lessToJs(source);
+  console.log('source', source);
+  const keys = Object.keys(vars);
+  if (!keys.length) {
+    this.emitWarning('Could not find any extractable less variables!');
   }
 
-  return "module.exports = {\n" + files.map(function (file) {
-    this.addDependency(path.resolve(resourceDir, file));
+  const transformKey = (key) => {
+      let ret = key.replace(/^@/, '');
+      if (camelCaseKeys) {
+          console.log('XXX');
+          ret = camelcase(ret);
+      }
+      return ret;
+  }
 
-    var stringifiedFile = JSON.stringify(file);
-    return "\t" + stringifiedFile + ": require(" + stringifiedFile + ")";
-  }, this).join(",\n") + "\n};"
+  const cleanedVars = keys.reduce((prev, key) => {
+      prev[transformKey(key)] = vars[key];
+      return prev;
+  }, {});
+
+  return `module.exports = ${JSON.stringify(cleanedVars, true, 2)};\n`;
 };

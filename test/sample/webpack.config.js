@@ -1,22 +1,28 @@
 "use strict";
 
-var path = require("path");
-
-var globLoaderPath = path.resolve(__dirname, "../../index.js");
+const path = require("path");
+const lessLoaderPath = path.resolve(__dirname, '..', '..');
 
 module.exports = {
-  entry: __dirname + "/index.js",
+  entry: path.join(__dirname, 'index.js'),
   output: {
     path: __dirname,
-    filename: "bundle.js",
+    filename: 'bundle.js',
     libraryTarget: 'commonjs'
   },
   module: {
     loaders: [
-      {
-        test: /\.pattern$/,
-        loader: globLoaderPath
-      }
+      [
+        {
+          test: /\.camelcase\.less$/,
+          loader: lessLoaderPath,
+          query: 'camelCase'
+        },
+        {
+          test: /\.less$/,
+          loader: lessLoaderPath
+        },
+      ]
     ]
   }
 };

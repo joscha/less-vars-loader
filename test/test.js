@@ -1,12 +1,28 @@
-var test = require("tap").test;
-var testBundle = require("./sample/bundle");
-var a = require("./sample/dir/a.js");
-var b = require("./sample/dir/b.js");
+const path = require('path');
+const chai = require('chai');
 
-test("glob-loader", function (t) {
-  t.similar(testBundle, {
-      "./dir/a.js": a,
-      "./dir/b.js": b,
+chai.should();
+
+const testBundle = require(path.join(__dirname, 'sample', 'bundle'));
+
+describe("less-vars-loader", () => {
+  it('should be warn when processing an empty less file', () => {
+    testBundle.empty.should.be.deep.equal({});
   });
-  t.end()
+
+  it('should be possible to transform a less file into JSON', () => {
+    testBundle.normal.should.be.deep.equal({
+      'my-first-var': '1px',
+      'my-second-var': '200',
+      'my-third-var': "'foo'",
+    });
+  });
+
+  it('should e possible to export camel cased values', () => {
+      testBundle.camelCased.should.be.deep.equal({
+        myFirstVar: '1px',
+        mySecondVar: '200',
+        myThirdVar: "'foo'",
+      });
+  });
 });
