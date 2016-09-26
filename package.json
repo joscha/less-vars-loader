@@ -1,6 +1,6 @@
 {
   "name": "less-vars-loader",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "webpack loader to load variables from less files",
   "main": "index.js",
   "scripts": {
