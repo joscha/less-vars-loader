@@ -1,15 +1,15 @@
 {
   "name": "less-vars-loader",
-  "version": "1.0.0",
   "description": "webpack loader to load variables from less files",
   "main": "index.js",
   "scripts": {
     "pretest": "webpack --config ./test/sample/webpack.config.js",
-    "test": "mocha"
+    "test": "mocha",
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/joscha/less-vars-loader.git"
+    "url": "https://github.com/joscha/less-vars-loader.git"
   },
   "author": "Joscha Feth <joscha@feth.com>",
   "engines": {
@@ -33,7 +33,14 @@
   ],
   "devDependencies": {
     "chai": "^3.5.0",
+    "cz-conventional-changelog": "^1.2.0",
     "mocha": "^3.0.2",
+    "semantic-release": "^4.3.5",
     "webpack": "^1.9.10"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
