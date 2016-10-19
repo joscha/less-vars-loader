@@ -1,0 +1,4 @@
+@a: 10px;
+@c: @b;
+@b: @a;
+@d: @c * 2; // non-trivial assignments are not resolved

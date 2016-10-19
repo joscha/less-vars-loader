@@ -29,12 +29,35 @@ const vars = require("less-vars-loader!./some.less");
 // vars == { 'my-var': '2px' }
 ```
 
-### Camel casing
+### Camel casing (?camelCase)
+
+The exported keys can be camelCased.
+This is disabled by default.
 
 ```js
 const vars = require("less-vars-loader?camelCase!./some.less");
 // vars == { myVar: '2px' }
 ```
+
+### Resolving variables (?resolveVariables)
+
+For simple `@x = @y` assignments this module can follow the assigned variable replace it with the last assignment.
+This is disabled by default.
+
+> Attention: Circular assignments are not supported, neither are non-trivial assignment such as calculations.
+
+```less
+// some.less
+@a: 1px;
+@b: @a;
+@c: @b;
+```
+
+```js
+const vars = require("less-vars-loader?resolveVariables!./some.less");
+// vars == { a: '1px', b: '1px', c: '1px' }
+```
+
 
 ## TODO
 

@@ -14,6 +14,11 @@ module.exports = {
     loaders: [
       [
         {
+          test: /\.resolved\.less$/,
+          loader: lessLoaderPath,
+          query: 'resolveVariables'
+        },
+        {
           test: /\.camelcase\.less$/,
           loader: lessLoaderPath,
           query: 'camelCase'

@@ -18,11 +18,19 @@ describe("less-vars-loader", () => {
     });
   });
 
-  it('should e possible to export camel cased values', () => {
+  it('should be possible to export camel cased values', () => {
       testBundle.camelCased.should.be.deep.equal({
         myFirstVar: '1px',
         mySecondVar: '200',
         myThirdVar: "'foo'",
+      });
+  });
+
+  it('should be possible to have variable indirections', () => {
+      testBundle.resolved.should.be.deep.equal({
+        a: '10px',
+        b: '10px',
+        c: '10px',
       });
   });
 });
