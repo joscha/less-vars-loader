@@ -26,7 +26,9 @@ module.exports = function(source) {
         }
         return value;
       }
-      entries(vars).map(([key, value]) => {
+      entries(vars).map((entry) => {
+        const key = entry[0];
+        const value = entry[1];
         vars[key] = followVar(value);
       });
   }
