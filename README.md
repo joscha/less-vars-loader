@@ -44,7 +44,7 @@ const vars = require("less-vars-loader?camelCase!./some.less");
 For simple `@x = @y` assignments this module can follow the assigned variable replace it with the last assignment.
 This is disabled by default.
 
-> Attention: Circular assignments are not supported, neither are non-trivial assignment such as calculations.
+> Attention: Circular assignments are not supported, neither are non-trivial assignments such as calculations.
 
 ```less
 // some.less
