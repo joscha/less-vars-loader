@@ -1,5 +1,7 @@
 # less-vars-loader
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/joscha/less-vars-loader.svg)](https://greenkeeper.io/)
+
 [![Build status](https://img.shields.io/travis/joscha/less-vars-loader/master.svg)](https://travis-ci.org/joscha/less-vars-loader)
 [![npm](https://img.shields.io/npm/v/less-vars-loader.svg)](https://www.npmjs.com/package/less-vars-loader)
 ![npm](https://img.shields.io/npm/l/less-vars-loader.svg)
