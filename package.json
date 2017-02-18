@@ -21,7 +21,7 @@
   },
   "homepage": "https://github.com/joscha/less-vars-loader#readme",
   "dependencies": {
-    "camelcase": "^3.0.0",
+    "camelcase": "^4.0.0",
     "less-vars-to-js": "^1.1.2",
     "loader-utils": "^0.2.16",
     "object.entries": "^1.0.3"
@@ -36,8 +36,8 @@
     "chai": "^3.5.0",
     "cz-conventional-changelog": "^1.2.0",
     "mocha": "^3.0.2",
-    "semantic-release": "^4.3.5",
-    "webpack": "^1.9.10"
+    "semantic-release": "^6.3.2",
+    "webpack": "^2.2.1"
   },
   "config": {
     "commitizen": {
